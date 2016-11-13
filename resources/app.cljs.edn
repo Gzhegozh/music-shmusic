@@ -1,0 +1,2 @@
+{:require  [music-shmusic.client.core]
+ :init-fns [music-shmusic.client.core/init]}
