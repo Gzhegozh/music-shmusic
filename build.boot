@@ -2,7 +2,6 @@
  :dependencies
  '[[org.clojure/clojure "1.8.0"]
    [ring "1.5.0"]
-   ;; [org.clojure/tools.nrepl "0.2.12"]
    [org.clojars.gjahad/debug-repl "0.3.3"]
    [http-kit "2.2.0"]
    [com.datomic/datomic-free "0.9.5404"]
