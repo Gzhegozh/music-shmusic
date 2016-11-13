@@ -10,9 +10,10 @@
    [mount "0.1.10"]]
  :source-paths #{"src"})
 
-(require '[music-shmusic.core :as ms]
-         '[org.httpkit.server :as http-kit]
-         '[ring.middleware.reload :as reload])
+(apply
+ require '[[music-shmusic.core :as ms]
+           [org.httpkit.server :as http-kit]
+           [ring.middleware.reload :as reload]])
 
 (deftask dev []
   (comp
