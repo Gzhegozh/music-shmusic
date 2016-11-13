@@ -1,8 +1,5 @@
 (ns music-shmusic.core
   (:require
-   [compojure.core :as cc]
-   [compojure.handler :as handler]
-   [compojure.route :as route]
    [alex-and-georges.debug-repl :as debug]
    ;; [com.gfredericks.debug-repl :as debug]
    [music-shmusic.users :as users]
@@ -19,15 +16,8 @@
    :body (str "Hello, " (username-or-stranger) "!\n"
               (prn-str request))})
 
-(cc/defroutes app-routes
-  (cc/GET "/"
-          request
-          (hello-handler request))
-  (route/resources "")
-  (route/not-found "<p>Page not found.</p>"))
-
 (def app
-  (-> (handler/site app-routes)
+  (-> hello-handler
       users/ring-wrap-auth
       ring-kw-params/wrap-keyword-params
       ring-params/wrap-params))
