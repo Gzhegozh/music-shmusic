@@ -19,13 +19,6 @@
    :body (str "Hello, " (username-or-stranger) "!\n"
               (prn-str request))})
 
-(defn wrap-auth [next-handler]
-  (fn [{:keys [params] :as request}]
-    (if-let [user (users/authenticate-user params)]
-      (binding [users/current-user user]
-         (next-handler request))
-       (next-handler request))))
-
 (cc/defroutes app-routes
   (cc/GET "/"
           request
@@ -35,6 +28,6 @@
 
 (def app
   (-> (handler/site app-routes)
-      wrap-auth
+      users/ring-wrap-auth
       ring-kw-params/wrap-keyword-params
       ring-params/wrap-params))

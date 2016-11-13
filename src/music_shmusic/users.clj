@@ -29,3 +29,10 @@
     (if (validate-password user password)
       user)
     false))
+
+(defn ring-wrap-auth [next-handler]
+  (fn [{:keys [params] :as request}]
+    (if-let [user (authenticate-user params)]
+      (binding [current-user user]
+        (next-handler request))
+      (next-handler request))))
