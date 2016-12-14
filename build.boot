@@ -1,4 +1,10 @@
 (set-env!
+ :repositories
+ #(conj %
+        ["my-datomic" {:url "https://my.datomic.com/repo"
+                       :username (System/getenv "DATOMIC_USERNAME")
+                       :password (System/getenv "DATOMIC_PASSWORD")}])
+
  :dependencies
  '[[org.clojure/clojure "1.8.0"]
    [org.clojure/clojurescript "1.9.293"]
@@ -12,7 +18,7 @@
    ;; app:
    [ring "1.5.0"]
    [http-kit "2.2.0"]
-   [com.datomic/datomic-free "0.9.5404"]
+   [com.datomic/datomic-pro "0.9.5544"]
    [reagent "0.6.0"]
    [mount "0.1.10"]]
  :source-paths #{"src"}
@@ -28,6 +34,7 @@
            [music-shmusic.config :as config]])
 
 (deftask dev []
+  (server/init-conn)
   (comp
    (fn [x]
      (println "Starting server")

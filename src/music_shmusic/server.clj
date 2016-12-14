@@ -8,6 +8,8 @@
    [ring.middleware.file :as file]
    [ring.middleware.keyword-params :as ring-kw-params]
 
+   [datomic.api :as d]
+   
    [mount.core :as m]
    [org.httpkit.server :as http-kit]))
 
@@ -15,6 +17,12 @@
   {:status 200
    :body (str "Hello, " (or (:username users/current-user) "stranger") "!\n"
               (prn-str request))})
+
+(defonce conn (atom nil))
+
+(defn init-conn []
+  (reset! conn (d/connect config/db-uri)))
+  
 
 (def app
   (-> hello-handler

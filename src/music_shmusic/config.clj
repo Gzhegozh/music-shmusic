@@ -1,5 +1,6 @@
 (ns music-shmusic.config
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io])
+  (:require [datomic.api :as d]))
 
 (defn make-path [& name-parts]
   (.getAbsolutePath (apply io/file name-parts)))
@@ -11,3 +12,6 @@
 (println "Project dir is" project-dir)
 (def webroot-dir (make-path project-dir "www-root"))
 (def target-dir  (make-path webroot-dir "target"))
+
+(def db-uri "datomic:dev://localhost:14334/ms")
+
