@@ -17,6 +17,7 @@
 
    ;; app:
    [ring "1.5.0"]
+   [bidi "2.0.14"]
    [http-kit "2.2.0"]
    [com.datomic/datomic-pro "0.9.5544"]
    [reagent "0.6.0"]
