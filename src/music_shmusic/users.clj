@@ -1,4 +1,5 @@
-(ns music-shmusic.users)
+(ns music-shmusic.users
+  (:require [gravatar.core :as gr]))
 
 (def users (atom []))
 (def ^:dynamic current-user nil)
@@ -36,3 +37,7 @@
       (binding [current-user user]
         (next-handler request))
       (next-handler request))))
+
+(defn get-gravatar-url [email]
+  (gr/avatar-url email))
+

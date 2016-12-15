@@ -21,6 +21,7 @@
    [http-kit "2.2.0"]
    [com.datomic/datomic-pro "0.9.5544"]
    [reagent "0.6.0"]
+   [gravatar "1.1.0"]
    [mount "0.1.10"]]
  :source-paths #{"src"}
  :resource-paths #{"resources"})
