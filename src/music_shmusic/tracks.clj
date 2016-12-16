@@ -16,12 +16,17 @@
   (d/query '[:find [?track ...]
              :where [?track :track/name]]))
 
-(defn find-tracks-by-artist [artist-name]
+(defn find-tracks-by-artist [artist]
   (d/query '[:find [?track ...]
-             :in $ ?artist-name
-             :where [?artist :artist/name ?artist-name]
-             [?track :track/artists ?artist]]
-           artist-name))
+             :in $ ?artist
+             :where [?track :track/artists ?artist]]
+           artist))
+
+(defn find-tracks-by-release [release]
+  (d/query '[:find [?tracks ...]
+             :in $ ?release
+             :where [?release :release/tracks ?tracks]]
+           release))
 
 (defn get-track-by-id [id]
   (d/entity-attrs id))

@@ -19,12 +19,11 @@
   (d/query '[:find [?release ...]
              :where [?release :release/name]]))
 
-(defn find-releases-by-artist [artist-name]
+(defn find-releases-by-artist [artist]
   (d/query '[:find [?release ...]
-             :in $ ?artist-name
-             :where [?artist :artist/name ?artist-name]
-             [?release :release/artists ?artist]]
-           artist-name))
+             :in $ ?artist
+             :where [?release :release/artists ?artist]]
+           artist))
 
 (defn get-release-by-id [id]
   (d/entity-attrs id))
