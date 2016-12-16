@@ -1,0 +1,149 @@
+[
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :country/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/unique :db.unique/value
+  :db/doc "The name of the country"
+  :db.install/_attribute :db.part/db}
+
+ ;; artist attributes
+ {:db/id #db/id[:db.part/db]
+  :db/ident :artist/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/index true
+  :db/doc "The artist's name"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :artist/sortName
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db/doc "The artist's name for use in alphabetical sorting, e.g. Beatles, The"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :artist/country
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/doc "The artist's country of origin"
+  :db.install/_attribute :db.part/db}
+
+  ;; release attributes
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/country
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/one
+  :db/doc "The country where the recording was released"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/index true
+  :db/doc "The name of the release"
+  :db.install/_attribute :db.part/db}
+ 
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/year
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db/doc "The year of the release"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/month
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "The month of the release"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/day
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "The day of the release"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/artists
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "The set of artists contributing to the release"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+   :db/ident :release/tracks
+   :db/valueType :db.type/ref
+   :db/cardinality :db.cardinality/many
+   :db/doc "The set of tracks in the release"
+   :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :release/status
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db/doc "The status of the release"
+  :db.install/_attribute :db.part/db}
+
+ ;; track attributes
+ {:db/id #db/id[:db.part/db]
+  :db/ident :track/artists
+  :db/valueType :db.type/ref
+  :db/cardinality :db.cardinality/many
+  :db/doc "The artists who contributed to the track"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :track/position
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/doc "The position of the track relative to the other tracks on the medium"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :track/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/fulltext true
+  :db/index true
+  :db/doc "The track name"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :track/duration
+  :db/valueType :db.type/long
+  :db/cardinality :db.cardinality/one
+  :db/index true
+  :db/doc "The duration of the track in msecs"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/name
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "The name of the user"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/email
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "User's email address"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id #db/id[:db.part/db]
+  :db/ident :user/encrypted-password
+  :db/valueType :db.type/string
+  :db/cardinality :db.cardinality/one
+  :db/doc "Hash value of the user's password"
+  :db.install/_attribute :db.part/db}
+ ]
