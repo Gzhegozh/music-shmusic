@@ -2,15 +2,21 @@
   (:require
    [music-shmusic.config :as config]
    [music-shmusic.users :as users]
+   ;; api functions to call from noapi
+   [music-shmusic.api.artists]
+   [music-shmusic.api.releases]
+   [music-shmusic.api.tracks]
 
    [ring.middleware.reload :as reload]
    [ring.middleware.params :as ring-params]
    [ring.middleware.file :as file]
    [ring.middleware.keyword-params :as ring-kw-params]
+   [ring.middleware.json :as ring-json]
    [ring.util.response :as response]
 
    [mount.core :as m]
    [bidi.ring :refer (make-handler)]
+   [noapi.middleware :as noapi]
    [org.httpkit.server :as http-kit]))
 
 
@@ -45,6 +51,8 @@
       (file/wrap-file config/webroot-dir)
       ring-kw-params/wrap-keyword-params
       ring-params/wrap-params
+      (noapi/wrap-api "music-shmusic.api" "/api")
+      ring-json/wrap-json-response
       reload/wrap-reload))
 
 (m/defstate server
