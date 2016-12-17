@@ -23,6 +23,7 @@
    [com.datomic/datomic-pro "0.9.5544"]
    [reagent "0.6.0"]
    [gravatar "1.1.0"]
+   [clojure-vk "0.1.0-SNAPSHOT"]
    [noapi "1.0.0"]
    [mount "0.1.10"]]
  :source-paths #{"src"}

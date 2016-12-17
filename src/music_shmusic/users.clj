@@ -1,5 +1,8 @@
 (ns music-shmusic.users
-  (:require [gravatar.core :as gr]))
+  (:require [gravatar.core :as gr])
+  (:require [music-shmusic.config :as config]))
+
+(use '[clojure-vk.core :as vk-core], '[clojure-vk.auth :as vk-auth])
 
 (def users (atom []))
 (def ^:dynamic current-user nil)
@@ -41,3 +44,10 @@
 (defn get-gravatar-url [email]
   (gr/avatar-url email))
 
+(defn vk-authorize []
+  (vk-auth/get-auth-url
+    config/vk-app-id
+    "http://localhost:3000/index"
+    :display-page
+    {:scope (vk-auth/scope :offline),
+     :response-type "token"}))
