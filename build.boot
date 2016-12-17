@@ -7,14 +7,27 @@
 
  :dependencies
  '[[org.clojure/clojure "1.8.0"]
-   [org.clojure/clojurescript "1.9.293"]
+   [org.clojure/clojurescript "1.9.293" :cache-analysis false, :optimizations :none]
    [adzerk/boot-cljs "1.7.228-2"]
    [adzerk/boot-reload "0.4.13"]
    [adzerk/boot-cljs-repl   "0.3.3"] ;; latest release
    [com.cemerick/piggieback "0.2.1"  :scope "test"]
    [weasel                  "0.7.0"  :scope "test"]
    [org.clojure/tools.nrepl "0.2.12" :scope "test"]
+   [org.clojure/core.async "0.2.374"
+      :exclusions [org.clojure/tools.reader]]
+   [reagent-utils "0.1.7"]
+   [venantius/accountant "0.1.7"]
 
+   [ring-server "0.4.0"]
+   [reagent-forms "0.5.28"]
+   [ring/ring-defaults "0.2.1"]
+   [compojure "1.5.1"]
+   [hiccup "1.0.5"]
+   [figwheel-sidecar "0.5.7"]
+   [pjstadig/humane-test-output "0.8.1"]
+   [secretary "1.2.3"]
+   [cljs-ajax "0.5.8"]
    ;; app:
    [ring "1.5.0"]
    [bidi "2.0.14"]
