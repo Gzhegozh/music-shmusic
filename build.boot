@@ -7,7 +7,7 @@
 
  :dependencies
  '[[org.clojure/clojure "1.8.0"]
-   [org.clojure/clojurescript "1.9.293" :cache-analysis false, :optimizations :none]
+   [org.clojure/clojurescript "1.9.293"]
    [adzerk/boot-cljs "1.7.228-2"]
    [adzerk/boot-reload "0.4.13"]
    [adzerk/boot-cljs-repl   "0.3.3"] ;; latest release
@@ -22,7 +22,6 @@
    [ring-server "0.4.0"]
    [reagent-forms "0.5.28"]
    [ring/ring-defaults "0.2.1"]
-   [compojure "1.5.1"]
    [hiccup "1.0.5"]
    [figwheel-sidecar "0.5.7"]
    [pjstadig/humane-test-output "0.8.1"]
