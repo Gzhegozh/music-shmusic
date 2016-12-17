@@ -14,4 +14,4 @@
 (def target-dir  (make-path webroot-dir "target"))
 
 (def db-uri "datomic:dev://localhost:14334/ms")
-
+(def vk-app-id (System/getenv "VK_APP_ID"))

@@ -29,11 +29,14 @@
    [cljs-ajax "0.5.8"]
    ;; app:
    [ring "1.5.0"]
+   [ring/ring-json "0.4.0"]
    [bidi "2.0.14"]
    [http-kit "2.2.0"]
    [com.datomic/datomic-pro "0.9.5544"]
    [reagent "0.6.0"]
    [gravatar "1.1.0"]
+   [clojure-vk "0.1.0-SNAPSHOT"]
+   [noapi "1.0.0"]
    [mount "0.1.10"]]
  :source-paths #{"src"}
  :resource-paths #{"resources"})
@@ -44,11 +47,12 @@
            [adzerk.boot-cljs-repl :as cljs-repl]
 
            [mount.core :as mount]
+           [music-shmusic.db.api :as db]
            [music-shmusic.server :as server] ;; to register mount states
            [music-shmusic.config :as config]])
 
 (deftask dev []
-  (server/init-conn)
+  (db/init-conn)
   (comp
    (fn [x]
      (println "Starting server")
