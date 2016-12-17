@@ -9,17 +9,9 @@
    [ring.middleware.keyword-params :as ring-kw-params]
    [ring.util.response :as response]
 
-   [datomic.api :as d]
-   
    [mount.core :as m]
    [bidi.ring :refer (make-handler)]
    [org.httpkit.server :as http-kit]))
-
-;; ===== db connection =====
-(defonce conn (atom nil))
-
-(defn init-conn []
-  (reset! conn (d/connect config/db-uri)))
 
 
 ;; ===== requests handlers =====

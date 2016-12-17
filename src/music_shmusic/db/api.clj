@@ -1,15 +1,22 @@
 (ns music-shmusic.db.api)
 
 (require '[datomic.api :as d]
-         '[music-shmusic.server :as server])
+         '[music-shmusic.config :as config])
 
+;; ===== db connection =====
+(defonce conn (atom nil))
+
+(defn init-conn []
+  (reset! conn (d/connect config/db-uri)))
 
 (defn db []
-  (d/db @server/conn))
+  (d/db @conn))
+
+;; ===== db access =====
 
 (def query #(apply d/q %1 (db) %&))
 
-(def command #(d/transact @server/conn %))
+(def command #(d/transact @conn %))
 
 (defn existed-entity [id]
   (ffirst (query '[:find ?eid :in $ ?eid :where [?eid]] id)))

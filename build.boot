@@ -32,11 +32,12 @@
            [adzerk.boot-cljs-repl :as cljs-repl]
 
            [mount.core :as mount]
+           [music-shmusic.db.api :as db]
            [music-shmusic.server :as server] ;; to register mount states
            [music-shmusic.config :as config]])
 
 (deftask dev []
-  (server/init-conn)
+  (db/init-conn)
   (comp
    (fn [x]
      (println "Starting server")
