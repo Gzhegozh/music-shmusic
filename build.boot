@@ -14,7 +14,19 @@
    [com.cemerick/piggieback "0.2.1"  :scope "test"]
    [weasel                  "0.7.0"  :scope "test"]
    [org.clojure/tools.nrepl "0.2.12" :scope "test"]
+   [org.clojure/core.async "0.2.374"
+      :exclusions [org.clojure/tools.reader]]
+   [reagent-utils "0.1.7"]
+   [venantius/accountant "0.1.7"]
 
+   [ring-server "0.4.0"]
+   [reagent-forms "0.5.28"]
+   [ring/ring-defaults "0.2.1"]
+   [hiccup "1.0.5"]
+   [figwheel-sidecar "0.5.7"]
+   [pjstadig/humane-test-output "0.8.1"]
+   [secretary "1.2.3"]
+   [cljs-ajax "0.5.8"]
    ;; app:
    [ring "1.5.0"]
    [ring/ring-json "0.4.0"]
