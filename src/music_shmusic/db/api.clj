@@ -1,7 +1,6 @@
-(ns music-shmusic.db.api)
-
-(require '[datomic.api :as d]
-         '[music-shmusic.config :as config])
+(ns music-shmusic.db.api
+  (:require [datomic.api :as d]
+            [music-shmusic.config :as config]))
 
 ;; ===== db connection =====
 (defonce conn (atom nil))

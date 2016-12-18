@@ -1,6 +1,6 @@
 (ns music-shmusic.config
-  (:require [clojure.java.io :as io])
-  (:require [datomic.api :as d]))
+  (:require [clojure.java.io :as io]
+            [datomic.api :as d]))
 
 (defn make-path [& name-parts]
   (.getAbsolutePath (apply io/file name-parts)))

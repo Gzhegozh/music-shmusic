@@ -1,8 +1,7 @@
-(ns music-shmusic.releases)
-
-(require '[music-shmusic.artists :as a]
-         '[music-shmusic.db.api :as d]
-         '[music-shmusic.utils :as u])
+(ns music-shmusic.releases
+  (:require [music-shmusic.artists :as a]
+            [music-shmusic.db.api :as d]
+            [music-shmusic.utils :as u]))
 
 (defn all-releases []
   (d/query '[:find [?release ...]

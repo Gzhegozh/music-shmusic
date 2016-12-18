@@ -1,6 +1,6 @@
 (ns music-shmusic.users
-  (:require [gravatar.core :as gr])
-  (:require [music-shmusic.config :as config]))
+  (:require [gravatar.core :as gr]
+            [music-shmusic.config :as config]))
 
 (use '[clojure-vk.core :as vk-core], '[clojure-vk.auth :as vk-auth])
 

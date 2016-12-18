@@ -7,4 +7,3 @@
   (def new-keys (map #(keyword namespace (name %))
                      old-keys))
   (rename-keys hashmap (zipmap old-keys new-keys)))
-  

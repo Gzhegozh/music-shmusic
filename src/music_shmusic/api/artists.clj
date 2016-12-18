@@ -1,9 +1,8 @@
-(ns music-shmusic.api.artists)
-
-(require '[ring.util.response :as ring-r]
-         '[music-shmusic.artists :as a]
-         '[music-shmusic.releases :as r]
-         '[music-shmusic.tracks :as t])
+(ns music-shmusic.api.artists
+  (:require [ring.util.response :as ring-r]
+            [music-shmusic.artists :as a]
+            [music-shmusic.releases :as r]
+            [music-shmusic.tracks :as t]))
 
 ;; http path /api/artists/get?_=[{"id": <artist-id>}] or
 ;; http path /api/artists/get?_=[{"name": <artist-name>}] or

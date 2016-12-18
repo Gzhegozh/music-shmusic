@@ -1,9 +1,8 @@
-(ns music-shmusic.api.tracks)
-
-(require '[ring.util.response :as ring-r]
-         '[music-shmusic.tracks :as a]
-         '[music-shmusic.tracks :as r]
-         '[music-shmusic.tracks :as t])
+(ns music-shmusic.api.tracks
+  (:require [ring.util.response :as ring-r]
+            [music-shmusic.tracks :as a]
+            [music-shmusic.tracks :as r]
+            [music-shmusic.tracks :as t]))
 
 ;; http path /api/tracks/get?_=[{"id": <track-id>}] or
 ;; http path /api/tracks/get?_=[{"name": <track-name>}] or

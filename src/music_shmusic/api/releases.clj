@@ -1,9 +1,8 @@
-(ns music-shmusic.api.releases)
-
-(require '[ring.util.response :as ring-r]
-         '[music-shmusic.releases :as a]
-         '[music-shmusic.releases :as r]
-         '[music-shmusic.tracks :as t])
+(ns music-shmusic.api.releases
+  (:require [ring.util.response :as ring-r]
+            [music-shmusic.releases :as a]
+            [music-shmusic.releases :as r]
+            [music-shmusic.tracks :as t]))
 
 ;; http path /api/releases/get?_=[{"id": <release-id>}] or
 ;; http path /api/releases/get?_=[{"name": <release-name>}] or
@@ -52,6 +51,7 @@
     (ring-r/status (ring-r/response {:error "Please, supply an id"})
                    400)))
 
+;; http path /api/releases/comments?_=[{"id": <release-id>}]
 (defn comments [params]
   (if (contains? params :id)
     (ring-r/response (r/get-release-comments (:id params)))

@@ -1,7 +1,6 @@
-(ns music-shmusic.artists)
-
-(require '[music-shmusic.db.api :as d]
-         '[music-shmusic.utils :as u])
+(ns music-shmusic.artists
+  (:require [music-shmusic.db.api :as d]
+            [music-shmusic.utils :as u]))
 
 (defn all-artists []
   (d/query '[:find [?artist ...]
