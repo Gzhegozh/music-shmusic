@@ -35,5 +35,9 @@
   (when-let [exists (existed-entity eid)]
     (command [[:db.fn/retractEntity exists]])))
 
+(defn update-entity [eid data]
+  (when-let [exists (existed-entity eid)]
+    (command [(assoc data :db/id exists)])))
+
 (defn create-entities [data]
   (command data))
