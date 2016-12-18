@@ -51,3 +51,8 @@
       (ring-r/response {}))
     (ring-r/status (ring-r/response {:error "Please, supply an id"})
                    400)))
+
+(defn comments [params]
+  (if (contains? params :id)
+    (ring-r/response (r/get-release-comments (:id params)))
+    (ring-r/response {})))

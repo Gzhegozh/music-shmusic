@@ -33,3 +33,15 @@
 
 (defn update-release [id attrs]
   (d/update-entity id attrs))
+
+(defn comment-release [attrs]
+  (def namespaced-attrs (u/namespaced-hashmap "comment" attrs))
+  (d/create-entities [namespaced-attrs]))
+
+(defn get-release-comments [release-id]
+  (def comments-ids
+    (d/query '[:find [?comment ...]
+               :in $ ?release
+               :where [?comment :comment/release ?release]]
+             release-id))
+  (map d/entity-attrs comments-ids))

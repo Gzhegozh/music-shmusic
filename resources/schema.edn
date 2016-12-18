@@ -134,13 +134,6 @@
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
-  :db/ident :release/comments
-  :db/valueType :db.type/ref
-  :db/cardinality :db.cardinality/many
-  :db/doc "Users' comments to release"
-  :db.install/_attribute :db.part/db}
-
- {:db/id #db/id[:db.part/db]
   :db/ident :release/genres
   :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/many
@@ -256,18 +249,18 @@
   :db/doc "A user who wrote a comment"
   :db.install/_attribute :db.part/db}
 
- {:db/id #db/id[:db.part/db]
-  :db/ident :comment/time
-  :db/valueType :db.type/instant
+  {:db/id #db/id[:db.part/db]
+  :db/ident :comment/release
+  :db/valueType :db.type/ref
   :db/cardinality :db.cardinality/one
-  :db/doc "The addition time of comment"
+  :db/doc "The release for those the comment was added"
   :db.install/_attribute :db.part/db}
 
  {:db/id #db/id[:db.part/db]
   :db/ident :comment/text
   :db/valueType :db.type/string
   :db/cardinality :db.cardinality/one
-  :db/doc "Text of comment"
+  :db/doc "Text of the comment"
   :db.install/_attribute :db.part/db}
  ]
  
