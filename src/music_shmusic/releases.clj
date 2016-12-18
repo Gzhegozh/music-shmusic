@@ -32,7 +32,8 @@
   (d/retract-entity id))
 
 (defn update-release [id attrs]
-  (d/update-entity id attrs))
+  (def namespaced-attrs (u/namespaced-hashmap "release" attrs))
+  (d/update-entity id namespaced-attrs))
 
 (defn comment-release [attrs]
   (def namespaced-attrs (u/namespaced-hashmap "comment" attrs))

@@ -25,4 +25,5 @@
   (d/retract-entity id))
 
 (defn update-artist [id attrs]
-  (d/update-entity id attrs))
+  (def namespaced-attrs (u/namespaced-hashmap "artist" attrs))
+  (d/update-entity id namespaced-attrs))

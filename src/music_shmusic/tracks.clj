@@ -31,11 +31,12 @@
   (d/entity-attrs id))
 
 (defn create-track [attrs]
-  (def namespaced-attrs (u/namespaced-hashmap "release" attrs))
+  (def namespaced-attrs (u/namespaced-hashmap "track" attrs))
   (d/create-entities [namespaced-attrs]))
  
 (defn delete-track [id]
   (d/retract-entity id))
 
 (defn update-track [id attrs]
-  (d/update-entity id attrs))
+  (def namespaced-attrs (u/namespaced-hashmap "track" attrs))
+  (d/update-entity id namespaced-attrs))
