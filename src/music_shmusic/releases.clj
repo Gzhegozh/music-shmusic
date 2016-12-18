@@ -1,19 +1,13 @@
 (ns music-shmusic.releases)
 
 (require '[music-shmusic.artists :as a]
-         '[music-shmusic.db.api :as d])
+         '[music-shmusic.db.api :as d]
+         '[music-shmusic.utils :as u])
 
 
-(defn create-release [data]
-  (def artists (a/find-artists-by-name (:artist data)))
-  (def country (:country data))
-   
-  (d/create-entities [{:release/name (:name data)
-                       :release/year (:year data)
-                       :release/month (:month data)
-                       :release/day (:day data)
-                       :release/country [:country/name country]
-                       :release/artists artists}]))
+(defn create-release [attrs]
+  (def namespaced-attrs (u/namespaced-hashmap "release" attrs))
+  (d/create-entities [namespaced-attrs]))
 
 (defn all-releases []
   (d/query '[:find [?release ...]

@@ -1,9 +1,11 @@
 (ns music-shmusic.artists)
 
-(require '[music-shmusic.db.api :as d])
+(require '[music-shmusic.db.api :as d]
+         '[music-shmusic.utils :as u])
 
-(defn create-artist [name]
-  (d/create-entities [{:artist/name name}]))
+(defn create-artist [attrs]
+  (def namespaced-attrs (u/namespaced-hashmap "artist" attrs))
+  (d/create-entities [namespaced-attrs]))
 
 (defn all-artists []
   (d/query '[:find [?e ...]

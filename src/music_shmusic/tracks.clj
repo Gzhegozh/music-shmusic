@@ -2,15 +2,13 @@
 
 (require '[music-shmusic.artists :as a]
          '[music-shmusic.releases :as r]
-         '[music-shmusic.db.api :as d])
+         '[music-shmusic.db.api :as d]
+         '[music-shmusic.utils :as u)
 
 
 (defn create-track [data]
-  (def artists (a/find-artists-by-name (:artist data)))
-  (d/create-entities [{:track/name (:name data)
-                       :track/duration (:duration data)
-                       :track/position (:position data)
-                       :track/artists artists}]))
+  (def namespaced-attrs (u/namespaced-hashmap "track" attrs))
+  (d/create-entities [namespaced-attrs]))
 
 (defn all-tracks []
   (d/query '[:find [?track ...]
