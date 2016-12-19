@@ -14,7 +14,7 @@
            artist-name))
 
 (defn get-artist-by-id [id]
-  (d/entity-attrs id))
+  (u/remove-namespace-from-hashmap (d/entity-attrs id)))
  
 (defn create-artist [attrs]
   (def namespaced-attrs (u/namespaced-hashmap "artist" attrs))

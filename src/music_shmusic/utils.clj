@@ -7,3 +7,8 @@
   (def new-keys (map #(keyword namespace (name %))
                      old-keys))
   (rename-keys hashmap (zipmap old-keys new-keys)))
+
+(defn remove-namespace-from-hashmap [hashmap]
+  (def old-keys (keys hashmap))
+  (def new-keys (map #(keyword (name %)) old-keys)) 
+  (rename-keys hashmap (zipmap old-keys new-keys)))

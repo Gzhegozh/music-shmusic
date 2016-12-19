@@ -11,8 +11,7 @@
 (defn find-tracks-by-name [track-name]
   (d/query '[:find [?track ...]
              :in $ ?track-name
-             :where [(fulltext $ :track/name ?track-name)
-                     [[?track ?name ?tx ?score]]]]
+             :where [?track (fulltext $ :track/name ?track-name)]]
            track-name))
 
 (defn find-tracks-by-artist [artist]
@@ -28,7 +27,7 @@
            release))
 
 (defn get-track-by-id [id]
-  (d/entity-attrs id))
+  (u/remove-namespace-from-hashmap (d/entity-attrs id)))
 
 (defn create-track [attrs]
   (def namespaced-attrs (u/namespaced-hashmap "track" attrs))

@@ -21,7 +21,7 @@
            artist))
 
 (defn get-release-by-id [id]
-  (d/entity-attrs id))
+  (u/remove-namespace-from-hashmap (d/entity-attrs id)))
 
 (defn create-release [attrs]
   (def namespaced-attrs (u/namespaced-hashmap "release" attrs))
