@@ -11,7 +11,8 @@
 (defn find-tracks-by-name [track-name]
   (d/query '[:find [?track ...]
              :in $ ?track-name
-             :where [?track (fulltext $ :track/name ?track-name)]]
+             :where [(fulltext $ :track/name ?track-name)
+                     [[?track ?name ?tx ?score]]]]
            track-name))
 
 (defn find-tracks-by-artist [artist]
